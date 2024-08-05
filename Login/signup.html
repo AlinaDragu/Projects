@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css/style.css">
+    <title>Sign up page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sign_up">
+            <form id="registerForm">
+                <div>
+                    <input type="email" name="email" id="email" placeholder="Email address" required>
+                </div>
+                <div>
+                    <input type="text" name="name" id="name" placeholder="Full Name" required>
+                </div>
+                <div>
+                    <input type="text" name="username" id="username" placeholder="Username" required>
+                </div>
+                <div>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="log_btn">Sign Up</button>
+                <div id="successMessage"></div>
+                <div id="errorMessage" style="color:red;"></div>
+            </form>
+            <div class="sing-in border_insc">
+                <p>
+                    Have an account? 
+                    <a href="login.html">Log in</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const data = {
+                username: username,
+                email: email,
+                password: password
+            };
+
+            fetch('http://127.0.0.1:5000/signup', {  // Ensure the correct port number here
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => {
+                        throw new Error(err.message);
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById('successMessage').textContent = data.message;
+                document.getElementById('errorMessage').textContent = '';
+                if (data.message === "User created successfully") {
+                    // Redirect to login page
+                    window.location.href = 'login.html';
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                document.getElementById('errorMessage').textContent = error.message;
+            });
+        });
+    </script>
+</body>
+</html>
