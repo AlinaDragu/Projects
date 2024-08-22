@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     // Register
     const registerForm = document.getElementById('registerForm');
