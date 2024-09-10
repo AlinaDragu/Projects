@@ -1,3 +1,22 @@
+/* Box Model Hack */
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Clear fix hack */
+  .clearfix:after {
+       content: ".";
+       display: block;
+       clear: both;
+       visibility: hidden;
+       line-height: 0;
+       height: 0;
+  }
+  
+  .clear {
+      clear: both;
+  }
+  
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -58,4 +77,36 @@ button:hover {
 
 #successMessage {
     color: green;
+}
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    height:700px;
+    width: 30px;
+}
+
+.nav-list{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 50px;
+}
+
+.nav-list > button-list{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
+.nav-div{
+    margin-left: -760px;
+    
+}
+
+.dashboard-h1{
+    margin-left:-740px;
+    margin-bottom: 120px;
+    margin-top: -40px;
 }

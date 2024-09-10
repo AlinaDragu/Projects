@@ -121,4 +121,5 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!isLoggedIn && window.location.pathname.endsWith('dashboard.html')) {
         window.location.href = 'login.html';
     }
-});
+ });
+
