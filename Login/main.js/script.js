@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     // Register
     const registerForm = document.getElementById('registerForm');
@@ -90,36 +89,36 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Logout
-    const logoutButton = document.getElementById('logoutButton');
-    if (logoutButton) {
-        logoutButton.addEventListener('click', function() {
-            fetch('http://127.0.0.1:5000/logout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Logout failed');
-                }
-                return response.json();
-            })
-            .then(data => {
-                alert(data.message);
-                localStorage.removeItem('isLoggedIn');
-                window.location.href = 'login.html';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-    }
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        window.location.href = 'login.html';
+    });
 
-    // Redirect to login page if not logged in
+    // Button navigation
+    document.getElementById('homeBtn').addEventListener('click', function() {
+        window.location.href = 'dashboard.html';
+    });
+
+    document.getElementById('profileBtn').addEventListener('click', function() {
+        window.location.href = 'profile.html';
+    });
+
+    document.getElementById('exploreBtn').addEventListener('click', function() {
+        window.location.href = 'explore.html';
+    });
+
+    document.getElementById('messagesBtn').addEventListener('click', function() {
+        window.location.href = 'messages.html';
+    });
+
+    document.getElementById('notificationsBtn').addEventListener('click', function() {
+        window.location.href = 'notifications.html';
+    });
+
+
+
+    // Existing logic to redirect to login page if not logged in
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     if (!isLoggedIn && window.location.pathname.endsWith('dashboard.html')) {
         window.location.href = 'login.html';
     }
- });
-
+});

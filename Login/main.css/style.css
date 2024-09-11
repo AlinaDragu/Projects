@@ -110,3 +110,7 @@ button:hover {
     margin-bottom: 120px;
     margin-top: -40px;
 }
+
+.bold-text {
+    font-weight: bold;
+  }
