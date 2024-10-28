@@ -89,32 +89,49 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Logout
-    document.getElementById('logoutButton').addEventListener('click', function() {
-        window.location.href = 'login.html';
-    });
+    const logoutButton = document.getElementById('logoutButton');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', function() {
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'login.html';
+        });
+    }
 
     // Button navigation
-    document.getElementById('homeBtn').addEventListener('click', function() {
-        window.location.href = 'dashboard.html';
-    });
+    const homeButton = document.getElementById('homeButton');
+    if (homeButton) {
+        homeButton.addEventListener('click', function() {
+            window.location.href = 'dashboard.html';
+        });
+    }
 
-    document.getElementById('profileBtn').addEventListener('click', function() {
-        window.location.href = 'profile.html';
-    });
+    const profileButton = document.getElementById('profileButton');
+    if (profileButton) {
+        profileButton.addEventListener('click', function() {
+            window.location.href = 'profile.html';
+        });
+    }
 
-    document.getElementById('exploreBtn').addEventListener('click', function() {
-        window.location.href = 'explore.html';
-    });
+    const exploreButton = document.getElementById('exploreButton');
+    if (exploreButton) {
+        exploreButton.addEventListener('click', function() {
+            window.location.href = 'explore.html';
+        });
+    }
 
-    document.getElementById('messagesBtn').addEventListener('click', function() {
-        window.location.href = 'messages.html';
-    });
+    const messagesButton = document.getElementById('messagesButton');
+    if (messagesButton) {
+        messagesButton.addEventListener('click', function() {
+            window.location.href = 'messages.html';
+        });
+    }
 
-    document.getElementById('notificationsBtn').addEventListener('click', function() {
-        window.location.href = 'notifications.html';
-    });
-
-
+    const notificationsButton = document.getElementById('notificationsButton');
+    if (notificationsButton) {
+        notificationsButton.addEventListener('click', function() {
+            window.location.href = 'notifications.html';
+        });
+    }
 
     // Existing logic to redirect to login page if not logged in
     const isLoggedIn = localStorage.getItem('isLoggedIn');
