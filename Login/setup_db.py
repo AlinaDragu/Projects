@@ -1,3 +1,4 @@
+import os
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from flask import Flask, request, jsonify, redirect, url_for, session
@@ -16,8 +17,10 @@ CORS(app, resources={r"/*": {"origins": "*"}})  # This allows all origins; you c
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-# MongoDB connection setup
-uri = "mongodb+srv://alinaelena14:cutemonkeypanda1214@monkey.nqxckqk.mongodb.net/"
+# MongoDB connection setup (the connection string comes from the MONGODB_URI environment variable)
+uri = os.environ.get("MONGODB_URI")
+if not uri:
+    raise SystemExit("MONGODB_URI is not set. Set it to your MongoDB connection string, then run again.")
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 # Confirm the connection

@@ -51,7 +51,19 @@ You need **Python 3** and a **MongoDB** database (for example a free MongoDB Atl
    pip install flask flask-cors flask-login pymongo bcrypt
    ```
 
-2. In `setup_db.py`, set `uri` to your MongoDB connection string.
+2. Set your MongoDB connection string in the `MONGODB_URI` environment variable, in the same terminal where you'll start the API. It stays on your computer and never ends up in the code or on GitHub.
+
+   macOS / Linux:
+
+   ```bash
+   export MONGODB_URI="mongodb+srv://<user>:<password>@<cluster>.mongodb.net/"
+   ```
+
+   Windows (PowerShell):
+
+   ```powershell
+   $env:MONGODB_URI="mongodb+srv://<user>:<password>@<cluster>.mongodb.net/"
+   ```
 
 3. Start the API:
 
@@ -63,11 +75,11 @@ You need **Python 3** and a **MongoDB** database (for example a free MongoDB Atl
 
 4. Open `signup.html` with the VS Code **Live Server** extension (the repo is set to port `5501`), create an account, then log in.
 
-> ⚠️ Never commit a real database password. Keep the connection string out of the code, for example in an environment variable.
+> ⚠️ Never write the real connection string or password in `setup_db.py`. Always use `MONGODB_URI`.
 
 ## Ideas for improvement
 
 - Build the Explore, Messages and Notifications pages
 - Load real posts from the database instead of the sample ones
-- Read the MongoDB connection string and Flask secret key from environment variables
+- Read the Flask secret key from an environment variable too
 - Protect every page, not just the dashboard
